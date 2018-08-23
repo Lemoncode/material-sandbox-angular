@@ -1,13 +1,20 @@
 .root {
-    margin: 2rem;
+    margin: 2rem;    
+}
 
-    .input {
+:host ::ng-deep input {
         border: 1px solid darkgray;
         border-radius: 0;
         background-color: lightgray;
-    }
+        padding-top: 5px;
+        padding-bottom: 5px;
+}
 
-    // label {
-    //     color: white;
-    // }
+:host ::ng-deep .mat-form-field-label-wrapper label {
+    color: white;
+    margin-top: 3px;
+}
+
+:host ::ng-deep .mat-form-field .mat-form-field-underline {
+    height: 0;
 }
