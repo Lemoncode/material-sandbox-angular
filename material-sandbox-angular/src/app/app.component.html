@@ -1,10 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center; padding: 2em;">
-  <app-button label="BUTTON"></app-button>
-  <app-list></app-list>
-  <app-input></app-input>
-</div>
-
-<!-- <div class="wrapper">
-  <app-host class="lemon"></app-host>
-</div> -->
+<h2>Custom component demo</h2>
+<app-carousel>
+</app-carousel>
+<!-- This is just a reference that we can grab it later -->
+<ng-template #itemContent let-card="data">
+  <li>
+      {{card?.title}}
+      <div (click)="onCardSelected(card)">
+          {{card?.content}}
+      </div>
+  </li>
+</ng-template>
