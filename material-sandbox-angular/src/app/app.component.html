@@ -1,10 +1,10 @@
-<h2>Custom component demo</h2>
+<h2 style="text-align: center">Custom component demo</h2>
 <app-carousel>
 </app-carousel>
 <!-- This is just a reference that we can grab it later -->
 <ng-template #itemContent let-card="data">
-  <li>
-      {{card?.title}}
+  <li class="carousel-item">
+      <h3 class="carousel-item carousel-item-header">{{card?.title}}</h3>
       <div (click)="onCardSelected(card)">
           {{card?.content}}
       </div>
