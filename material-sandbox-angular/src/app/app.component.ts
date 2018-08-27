@@ -2,9 +2,14 @@ import {
   Component,
   ViewChild,
   AfterContentInit,
-  OnInit
+  OnInit,
+  OnDestroy
 } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { Todo } from './todo/todo.model';
+import { TodoService } from './todo/todo.service';
 
 @Component({
   selector: 'app-root',
@@ -16,36 +21,51 @@ export class AppComponent implements OnInit, AfterContentInit {
   // If we want to access this view child, we need a special hook, AfterViewInit
   @ViewChild('itemContent') itemContentTemplate;
   @ViewChild(CarouselComponent) carouselComponent: CarouselComponent;
-  // TODO: Add card type
-  // TODO: Move to a service
-  cards = [
-    {
-      id: 1,
-      title: 'Groceries',
-      content: 'Buy lettuce',
-    },
-    {
-      id: 2,
-      title: 'Supplies',
-      content: 'Buy hammer',
-    }
-  ];
+  selectedItemId: number;
+  $todos: Observable<Todo[]>
+  
+  constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
-    // TODO: Initialize data from service.
+    this.$todos = this.todoService.getTodos();
   }
 
   ngAfterContentInit(): void {
-    this.cards.forEach((c) => {
-      this.carouselComponent
-        .addCarouselItem(
-          this.itemContentTemplate,
-          c
-        )
+    this.$todos.subscribe((ts) => {
+      ts.forEach((t) => {
+        this.carouselComponent
+          .addCarouselItem(
+            this.itemContentTemplate,
+            t
+          );
+      });
     });
   }
 
-  onCardSelected(card): void {
-    this.carouselComponent.activeCarouselItem(card);
+  onAdd(): void {
+    const genericTodo = {
+      id: Date.now(),
+      title: 'Item',
+      content: 'Item content',
+    }
+    this.carouselComponent.addCarouselItem(
+      this.itemContentTemplate,
+      genericTodo
+    )
+  }
+
+  onCardSelected(todo: Todo): void {
+    this.selectedItemId = todo.id;
+    this.carouselComponent.activeCarouselItem(todo);
+  }
+
+  private resetSelectedItem = () => this.selectedItemId = 0;
+
+  onRemove(): void {
+    if (!!this.selectedItemId) {
+      this.carouselComponent
+        .deleteActiveCarouselItem(this.selectedItemId);
+      this.resetSelectedItem();
+    }
   }
 }
