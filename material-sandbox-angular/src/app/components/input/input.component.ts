@@ -4,6 +4,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  // encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.ShadowDom
 })
 export class InputComponent {}

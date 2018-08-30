@@ -1,20 +1,44 @@
-.root {
-    margin: 2rem;    
-}
+// .root.root {
+//     margin: 2rem; 
+//     border: 1px solid black;
+//     text-align: center;
+//     background-color: grey;
 
-:host ::ng-deep input {
-        border: 1px solid darkgray;
-        border-radius: 0;
-        background-color: lightgray;
-        padding-top: 5px;
-        padding-bottom: 5px;
-}
+//     label {
+//         color: white;
+//     }
+// }
 
-:host ::ng-deep .mat-form-field-label-wrapper label {
-    color: white;
-    margin-top: 3px;
-}
+// :host ::ng-deep input {
+//         border: 1px solid darkgray;
+//         border-radius: 0;
+//         background-color: lightgray;
+//         padding-top: 5px;
+//         padding-bottom: 5px;
+// }
 
-:host ::ng-deep .mat-form-field .mat-form-field-underline {
-    height: 0;
-}
+// :host ::ng-deep .mat-form-field-label-wrapper label {
+//     color: white;
+//     margin-top: 3px;
+// }
+
+// :host ::ng-deep .mat-form-field .mat-form-field-underline {
+//     height: 0;
+// }
+
+// input {
+//     border: 1px solid darkgray;
+//     border-radius: 0;
+//     background-color: lightgray;
+//     padding-top: 5px;
+//     padding-bottom: 5px;
+// }
+
+// .mat-form-field-label-wrapper label {
+// color: white;
+// margin-top: 3px;
+// }
+
+// .mat-form-field .mat-form-field-underline {
+// height: 0;
+// }
